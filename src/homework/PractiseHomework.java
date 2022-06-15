@@ -3,55 +3,31 @@ package homework;
 public class PractiseHomework {
 
     long convert(int minutes) {
-        int seconds = minutes * 60;
-        return seconds;
+        return minutes * 60L;
     }
 
     int calcAge(int years) {
-        int days = years * 365;
-        return days;
+        return years * 365;
     }
 
     int nextNumber(int number) {
-        int x = number + 1;
-        return x;
+        return ++number;
     }
 
     boolean isSameNum(int a, int b) {
-        if (a == b) {
-            return true;
-        } else {
-            return false;
-        }
+        return a == b;
     }
 
     boolean lessThanOrEqualToZero(int number) {
-        if (number <= 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return number <= 0;
     }
 
     boolean reverseBool(boolean value) {
-        boolean b = true;
-        if (b == value) {
-
-            return false;
-        } else {
-            return true;
-        }
+        return !value;
     }
 
     int maxLength(int[] array1, int[] array2) {
-        int x = array1.length;
-        int y = array2.length;
-        if (x > y && x != y) {
-            return x;
-        } else {
-            return y;
-        }
+        return array1.length > array2.length ? array1.length: array2.length;
     }
-
 
 }

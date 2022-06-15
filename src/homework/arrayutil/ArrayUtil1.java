@@ -68,7 +68,7 @@ public class ArrayUtil1 {
         for (int i = 0; i < array.length; i++) {
             result = result + array[i];
         }
-        System.out.println(+result/10);
+        System.out.println(+result / 10);
 
 
     }
