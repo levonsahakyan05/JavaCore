@@ -1,5 +1,7 @@
 package students;
 
+import com.sun.xml.internal.ws.wsdl.parser.InaccessibleWSDLException;
+
 public class StudentStorage {
 
     private Student[] array = new Student[10];
@@ -53,11 +55,15 @@ public class StudentStorage {
         return size;
     }
 
-    public void changeStudentsLesson(String newLessonName) {
-        for (int i = 0; i < size; i++) {
-            array[i].setLesson(newLessonName);
+
+    public Student getStudentByIndex(int index) {
+        if (index < 0 || index >= size) {
+            return null;
         }
+        return array[index];
     }
+
+
 }
 
 
