@@ -1,6 +1,6 @@
-package students;
+package students.storage;
 
-import com.sun.xml.internal.ws.wsdl.parser.InaccessibleWSDLException;
+import students.model.Student;
 
 public class StudentStorage {
 

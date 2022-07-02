@@ -1,12 +1,15 @@
-package homework.books;
+package homework.books.storage;
 
-import students.Student;
+
+import homework.books.model.Book;
+
 
 public class BookStorage {
     private Book[] array = new Book[10];
     private int size = 0;
 
     public void add(Book book) {
+
         if (size == array.length) {
             increaseArray();
         }
@@ -48,6 +51,7 @@ public class BookStorage {
 
             }
         }
+
     }
 
     public void printBooksByPriceRange(int firstNumber, int lastNumber) {
