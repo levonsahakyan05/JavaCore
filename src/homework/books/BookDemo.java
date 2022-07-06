@@ -5,6 +5,7 @@ import homework.books.model.Author;
 import homework.books.model.Book;
 import homework.books.storage.AuthorStorage;
 import homework.books.storage.BookStorage;
+import students.exception.LessonNotFoundException;
 
 import java.util.Scanner;
 
@@ -18,7 +19,13 @@ public class BookDemo implements BookCommands {
         boolean run = true;
         while (run) {
             BookCommands.printCommands();
-            int command = Integer.parseInt(scanner.nextLine());
+            int command;
+            try {
+                command = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                command = -1;
+            }
+
             switch (command) {
                 case EXIT:
                     run = false;
@@ -89,16 +96,22 @@ public class BookDemo implements BookCommands {
 
 
     private static void printBooksByPriceRange() {
-        System.out.println("please input first number");
-        int firstNumber = Integer.parseInt(scanner.nextLine());
-        System.out.println("Please input last number");
-        int lastNumber = Integer.parseInt(scanner.nextLine());
-        if (firstNumber > lastNumber) {
-            System.out.println("Wrong number");
-        } else {
-            bookStorage.printBooksByPriceRange(firstNumber, lastNumber);
+        try {
+            System.out.println("please input first number");
+            int firstNumber = Integer.parseInt(scanner.nextLine());
+            System.out.println("Please input last number");
+            int lastNumber = Integer.parseInt(scanner.nextLine());
+            if (firstNumber > lastNumber) {
+                System.out.println("Wrong number");
+            } else {
+                bookStorage.printBooksByPriceRange(firstNumber, lastNumber);
 
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Please input correct first number or last number");
         }
+
+
     }
 
     private static void printBooksByGenre() {
@@ -118,29 +131,28 @@ public class BookDemo implements BookCommands {
         if (authorStorage.getSize() != 0) {
             authorStorage.print();
             System.out.println("Please choose author index");
-            int authorIndex = Integer.parseInt(scanner.nextLine());
-            Author authorName = authorStorage.getAuthorByIndex(authorIndex);
-            if (authorName == null) {
-                System.out.println("Please choose correct index");
-                addBook();
-
-            } else {
+            Author authorName = null;
+            try {
+                int authorIndex = Integer.parseInt(scanner.nextLine());
+                authorName = authorStorage.getAuthorByIndex(authorIndex);
                 System.out.println("Please input book's title");
                 String title = scanner.nextLine();
-                System.out.println("Please input book's price");
+                System.out.println("Please input book's genre");
                 String priceStr = scanner.nextLine();
                 System.out.println("Please input book's count");
                 String countStr = scanner.nextLine();
-                System.out.println("Please input book's genre");
                 String genre = scanner.nextLine();
+                System.out.println("Please input book's price");
                 double price = Double.parseDouble(priceStr);
                 int count = Integer.parseInt(countStr);
-
-
                 Book book = new Book(title, authorName, price, count, genre);
                 bookStorage.add(book);
                 System.out.println("book created");
+            } catch (LessonNotFoundException | NumberFormatException e) {
+                System.out.println("please input correct index or number");
+                addBook();
             }
+
 
         }
 

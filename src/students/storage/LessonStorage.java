@@ -1,5 +1,6 @@
 package students.storage;
 
+import students.exception.LessonNotFoundException;
 import students.model.Lesson;
 
 
@@ -45,15 +46,14 @@ public class LessonStorage {
     }
 
 
-
     public int getSize() {
         return size;
     }
 
 
-    public Lesson getLessonByIndex(int index) {
+    public Lesson getLessonByIndex(int index) throws LessonNotFoundException {
         if (index < 0 || index >= size) {
-            return null;
+            throw new LessonNotFoundException("Lesson With" + index + "does not exits");
         }
         return array[index];
     }
