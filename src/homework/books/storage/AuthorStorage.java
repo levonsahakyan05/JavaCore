@@ -1,5 +1,6 @@
 package homework.books.storage;
 
+import homework.books.exception.AuthorNotFoundException;
 import homework.books.model.Author;
 import students.exception.LessonNotFoundException;
 
@@ -37,9 +38,9 @@ public class AuthorStorage {
     }
 
 
-    public Author getAuthorByIndex(int index) throws LessonNotFoundException {
+    public Author getAuthorByIndex(int index) throws AuthorNotFoundException {
         if (index < 0 || index >= size) {
-            throw new LessonNotFoundException("Author with" + index + "does not exits");
+            throw new AuthorNotFoundException("Author with" + index + "does not exits");
         }
         return array[index];
     }
