@@ -7,10 +7,10 @@ public class FileUtil {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
-        // fileSearch();
+       // fileSearch();
         // contentSearch();
         // findLines();
-        // printSizeOfPackage();
+        //  printSizeOfPackage();
         // createFileWithContent();
     }
 
@@ -24,20 +24,8 @@ public class FileUtil {
         System.out.println("Input fileName");
         String fileName = scanner.nextLine();
 
-        File file = new File(path);
-        if (file.exists() && file.isDirectory()) {
-            File[] file1 = file.listFiles();
-            for (File file2 : file1) {
-                if (file2.isFile() && file2.getName().equals(fileName)) {
-                    System.out.println(true);
-                } else {
-                    System.out.println("file does not exist");
-                }
-
-            }
-
-        }
-
+        File file = new File(path, fileName);
+        System.out.println(file.exists());
 
     }
 
@@ -85,9 +73,11 @@ public class FileUtil {
         if (file.exists() && file.isFile()) {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String txtKeyword = "";
+            int num = 0;
             while ((txtKeyword = reader.readLine()) != null) {
+                num++;
                 if (txtKeyword.equals(keyword)) {
-                    System.out.println(keyword);
+                    System.out.println(num + ": " + keyword);
 
                 }
             }

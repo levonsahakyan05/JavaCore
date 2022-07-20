@@ -10,6 +10,7 @@ public class ForTest {
             }
 
             System.out.println("kuku" + i);
+
         }
 
 
