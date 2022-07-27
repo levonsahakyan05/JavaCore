@@ -2,7 +2,6 @@ package homework.books.storage;
 
 import homework.books.exception.AuthorNotFoundException;
 import homework.books.model.Author;
-import students.exception.LessonNotFoundException;
 
 public class AuthorStorage {
     private Author[] array = new Author[10];
